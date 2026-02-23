@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Maverick Vince G Dizon</title>
+    <meta name="description" content="Detailed breakdown of projects by Maverick Vince G. Dizon including a Clothing Management System, Dynamic Company Website, and Academia Student Management System.">
+    <meta property="og:title" content="Projects | Maverick Vince G Dizon">
+    <meta property="og:description" content="Technical projects built with Java, Angular, MongoDB, Node.js, and more by Maverick Vince G. Dizon.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="scroll-progress-bar"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="navbar-logo">
+            <img src="asset/logo.png" alt="MVD Logo">
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="project.html">Project</a>
+            <a href="resume.html">Resume</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+</nav>
+
+     <main class="projects-detail-wrapper" role="main">
+
+        <!-- INTRO -->
+        <section class="projects-intro">
+            <p class="wid-eyebrow">MY WORK</p>
+            <h1 class="section-heading">PROJECTS</h1>
+            <p class="bio-paragraph">A comprehensive look at my technical work — covering system architecture, core features, and the tools behind each build.</p>
+
+            <!-- FILTER TAGS -->
+            <div class="proj-filter">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="java">JAVA</button>
+                <button class="filter-btn" data-filter="angular">ANGULAR</button>
+                <button class="filter-btn" data-filter="nodejs">NODE.JS</button>
+                <button class="filter-btn" data-filter="html">HTML/CSS</button>
+            </div>
+        </section>
+
+        <!-- PROJECT 01 -->
+        <section class="project-detail-block" data-tags="java">
+            <div class="project-content">
+                <span class="skill-num">01 / JAVA OOP</span>
+                <h2>CLOTHING MANAGEMENT SYSTEM</h2>
+                <div class="proj-tech-pills">
+                    <span>Java</span><span>OOP</span><span>VS Code</span>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> An inventory solution designed for clothing wholesalers to streamline day-to-day operations and reduce manual tracking errors.</p>
+                    <p><strong>Features:</strong> Category management, real-time stock tracking, supplier databases, and low-stock alerts.</p>
+                    <p><strong>Key Learning:</strong> Applied OOP principles — encapsulation, inheritance, and polymorphism — in a real-world data management context.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <span class="btn-small outline disabled" title="Live demo not available for Java desktop apps">NO LIVE DEMO</span>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup java-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">ClothingMS.java</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">public class</span> <span class="pm-cls">Inventory</span> {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">private</span> List&lt;Item&gt; stock;</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">private</span> SupplierDB db;</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">public void</span> <span class="pm-fn">addItem</span>(Item i) {</div>
+                            <div class="pm-code-line pm-indent2">stock.<span class="pm-fn">add</span>(i);</div>
+                            <div class="pm-code-line pm-indent">}</div>
+                            <div class="pm-code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup ui-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">Inventory Dashboard</span>
+                        </div>
+                        <div class="pm-ui-body">
+                            <div class="pm-ui-stat"><span>124</span><small>Items</small></div>
+                            <div class="pm-ui-stat"><span>18</span><small>Suppliers</small></div>
+                            <div class="pm-ui-stat alert"><span>3</span><small>Low Stock</small></div>
+                        </div>
+                        <div class="pm-ui-table">
+                            <div class="pm-ui-row header"><span>ITEM</span><span>QTY</span><span>STATUS</span></div>
+                            <div class="pm-ui-row"><span>T-Shirt</span><span>42</span><span class="ok">OK</span></div>
+                            <div class="pm-ui-row"><span>Jeans</span><span>5</span><span class="low">LOW</span></div>
+                            <div class="pm-ui-row"><span>Jacket</span><span>18</span><span class="ok">OK</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT 02 -->
+        <section class="project-detail-block reverse" data-tags="angular">
+            <div class="project-content">
+                <span class="skill-num">02 / ANGULAR</span>
+                <h2>DYNAMIC COMPANY WEBSITE</h2>
+                <div class="proj-tech-pills">
+                    <span>Angular</span><span>TypeScript</span><span>CSS</span><span>HTML</span>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> An enterprise portal providing a centralized hub for employee and company data with a modern dark-mode UI.</p>
+                    <p><strong>Features:</strong> Searchable employee directory, dynamic data filtering, component-based architecture, and responsive layout.</p>
+                    <p><strong>Key Learning:</strong> Built with Angular's component system and TypeScript interfaces, practicing reactive data flow and modular front-end design.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon/dynamic-company-website/tree/e29380a14e99a57ff53f8c0fd449ebb79f3ae36f/src" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <a href="https://prelim-project.netlify.app" target="_blank" class="btn-small outline">↗ LIVE DEMO</a>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">company-site.app</span>
+                        </div>
+                        <div class="pm-browser-body">
+                            <div class="pm-browser-nav"></div>
+                            <div class="pm-browser-hero">
+                                <div class="pm-bh-text"></div>
+                                <div class="pm-bh-text short"></div>
+                            </div>
+                            <div class="pm-browser-search">
+                                <div class="pm-search-bar">🔍 Search employees...</div>
+                            </div>
+                            <div class="pm-browser-cards">
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">employee.component.ts</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">@Component</span>({</div>
+                            <div class="pm-code-line pm-indent">selector: <span class="pm-str">'app-employee'</span>,</div>
+                            <div class="pm-code-line pm-indent">templateUrl: <span class="pm-str">'./employee.html'</span></div>
+                            <div class="pm-code-line">})</div>
+                            <div class="pm-code-line"><span class="pm-kw">export class</span> <span class="pm-cls">EmployeeComponent</span> {</div>
+                            <div class="pm-code-line pm-indent">employees: <span class="pm-cls">Employee</span>[] = [];</div>
+                            <div class="pm-code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT 03 — ACADEMIA STUDENT MANAGEMENT SYSTEM -->
+        <section class="project-detail-block" data-tags="nodejs">
+            <div class="project-content">
+                <span class="skill-num">03 / NODE.JS + MONGODB</span>
+                <h2>ACADEMIA STUDENT MANAGEMENT SYSTEM</h2>
+                <div class="proj-tech-pills">
+                    <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>REST API</span><span>Vanilla JS</span>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> A full-stack web application for managing student records with secure authentication, role-based access control, and a polished dark-themed UI — built entirely without a frontend framework.</p>
+                    <p><strong>Features:</strong> JWT login system with Admin and Viewer roles, full CRUD operations, real-time dashboard with animated stats, searchable and filterable student table with pagination, sortable columns, CSV export, and dark/light mode toggle.</p>
+                    <p><strong>Key Learning:</strong> Designed a proper MVC folder structure separating routes, middleware, config, and views. Implemented stateless JWT authentication, built a RESTful API with Express.js, and connected to MongoDB for persistent storage.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon/academia-student-management" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <span class="btn-small outline disabled" title="Deployment in progress">COMING SOON</span>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">Academia — Dashboard</span>
+                        </div>
+                        <div class="pm-browser-body" style="background:#0d0f14; padding:12px; display:flex; flex-direction:column; gap:8px;">
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+                                <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; padding:10px;">
+                                    <div style="font-size:18px; font-weight:700; color:#c9a84c;">10</div>
+                                    <div style="font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px;">Total Students</div>
+                                </div>
+                                <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; padding:10px;">
+                                    <div style="font-size:18px; font-weight:700; color:#4cbb7f;">8</div>
+                                    <div style="font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px;">Active</div>
+                                </div>
+                            </div>
+                            <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; overflow:hidden;">
+                                <div style="background:#141720; padding:6px 10px; font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr;">
+                                    <span>NAME</span><span>COURSE</span><span>YEAR</span><span>STATUS</span>
+                                </div>
+                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
+                                    <span>Vince Dizon</span><span style="color:#5b8dee;">BSIT</span><span>Yr 3</span><span style="color:#4cbb7f;">Active</span>
+                                </div>
+                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
+                                    <span>Maria Santos</span><span style="color:#5b8dee;">BSCS</span><span>Yr 2</span><span style="color:#4cbb7f;">Active</span>
+                                </div>
+                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
+                                    <span>Carlo Mendoza</span><span style="color:#5b8dee;">BSCS</span><span>Yr 4</span><span style="color:#e05c5c;">Inactive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">routes/students.js</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">const</span> router = <span class="pm-fn">require</span>(<span class="pm-str">'express'</span>).Router();</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line">router.<span class="pm-fn">get</span>(<span class="pm-str">'/'</span>, <span class="pm-kw">async</span> (req, res) => {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">const</span> students = <span class="pm-kw">await</span> col.<span class="pm-fn">find</span>({});</div>
+                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span>, data: students });</div>
+                            <div class="pm-code-line">});</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line">router.<span class="pm-fn">post</span>(<span class="pm-str">'/'</span>, protect, <span class="pm-kw">async</span> (req, res) => {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">await</span> col.<span class="pm-fn">insertOne</span>(req.body);</div>
+                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span> });</div>
+                            <div class="pm-code-line">});</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line">module.exports = router;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PROJECT 04 -->
+        <section class="project-detail-block reverse" data-tags="html">
+            <div class="project-content">
+                <span class="skill-num">04 / HTML · CSS · JS</span>
+                <h2>SILUNG COFFEE WEBSITE</h2>
+                <div class="proj-tech-pills">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> A fully designed multi-page website for Silung Coffee — a café inside a cultural center in Pampanga, Philippines. Built to establish the brand's digital presence and showcase the menu, features, and story.</p>
+                    <p><strong>Features:</strong> Multi-page layout (Home, Menu, Features, Contact, Sign-Up), customer testimonials, operating hours, social media integration, animated hero section with Ken Burns effect, and a modern minimal aesthetic.</p>
+                    <p><strong>Key Learning:</strong> Designed a cohesive design system from scratch — typography, color palette, spacing, and component patterns — and applied it consistently across 8+ pages without a framework.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://vincedizon.github.io/coffee/" target="_blank" rel="noopener noreferrer" class="btn-small">↗ LIVE SITE</a>
+                    <a href="https://github.com/vincedizon/coffee" target="_blank" rel="noopener noreferrer" class="btn-small outline">↗ GITHUB REPO</a>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">vincedizon.github.io/coffee</span>
+                        </div>
+                        <div class="pm-browser-body" style="background:#0e0c0a; padding:0; overflow:hidden;">
+                            <!-- Hero -->
+                            <div style="background: linear-gradient(160deg, #1a1208 0%, #0e0c0a 100%); padding:16px; border-bottom:1px solid #2a220f;">
+                                <div style="font-size:7px; letter-spacing:3px; color:#c9a84c; margin-bottom:6px;">SILUNG COFFEE</div>
+                                <div style="font-size:13px; font-weight:700; color:#f5f0e8; margin-bottom:4px;">Where Culture Meets Coffee.</div>
+                                <div style="font-size:8px; color:rgba(245,240,232,0.5); margin-bottom:10px;">Inside Kultura ng Pampanga Cultural Center</div>
+                                <div style="display:flex; gap:8px;">
+                                    <div style="background:#c9a84c; color:#0e0c0a; font-size:7px; font-weight:700; letter-spacing:1px; padding:5px 10px; border-radius:2px;">VIEW MENU</div>
+                                    <div style="border:1px solid rgba(201,168,76,0.4); color:#c9a84c; font-size:7px; font-weight:700; letter-spacing:1px; padding:5px 10px; border-radius:2px;">OUR STORY</div>
+                                </div>
+                            </div>
+                            <!-- Menu Preview -->
+                            <div style="padding:10px 14px;">
+                                <div style="font-size:7px; letter-spacing:2px; color:#c9a84c; margin-bottom:8px;">MENU HIGHLIGHTS</div>
+                                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
+                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
+                                        <div style="font-size:14px; margin-bottom:4px;">☕</div>
+                                        <div style="font-size:7px; color:#f5f0e8;">Kapeng Barako</div>
+                                        <div style="font-size:7px; color:#c9a84c;">₱85</div>
+                                    </div>
+                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
+                                        <div style="font-size:14px; margin-bottom:4px;">🍮</div>
+                                        <div style="font-size:7px; color:#f5f0e8;">Leche Flan Latte</div>
+                                        <div style="font-size:7px; color:#c9a84c;">₱120</div>
+                                    </div>
+                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
+                                        <div style="font-size:14px; margin-bottom:4px;">🫙</div>
+                                        <div style="font-size:7px; color:#f5f0e8;">Cold Brew</div>
+                                        <div style="font-size:7px; color:#c9a84c;">₱110</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span>
+                            <span class="pm-dot yellow"></span>
+                            <span class="pm-dot green"></span>
+                            <span class="pm-title">index.html — Hero Section</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">&lt;section</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero"</span><span class="pm-kw">&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-bg"</span><span class="pm-kw">&gt;&lt;/div&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-content"</span><span class="pm-kw">&gt;</span></div>
+                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;p</span> <span class="pm-cls">class</span>=<span class="pm-str">"eyebrow"</span><span class="pm-kw">&gt;</span></div>
+                            <div class="pm-code-line pm-indent2">  SILUNG COFFEE</div>
+                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;/p&gt;</span></div>
+                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;h1&gt;</span>Where Culture</div>
+                            <div class="pm-code-line pm-indent2">  Meets Coffee.<span class="pm-kw">&lt;/h1&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;/div&gt;</span></div>
+                            <div class="pm-code-line"><span class="pm-kw">&lt;/section&gt;</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>
+                © 2026 MAVERICK VINCE G DIZON |
+                <a href="https://www.linkedin.com/in/vincedizon/" target="_blank" rel="noopener noreferrer">LINKEDIN</a> |
+                <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer">GITHUB</a> |
+                <a href="mailto:vdizon499@gmail.com">VDIZON499@GMAIL.COM</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const progressBar = document.querySelector('.scroll-progress-bar');
+        window.addEventListener('scroll', () => {
+            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            if (progressBar) progressBar.style.width = progress + '%';
+        });
+
+
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projects   = document.querySelectorAll('.project-detail-block');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                projects.forEach(proj => {
+                    const tags = proj.dataset.tags || '';
+                    if (filter === 'all' || tags.includes(filter)) {
+                        proj.style.display = 'grid';
+                        setTimeout(() => proj.style.opacity = '1', 10);
+                    } else {
+                        proj.style.opacity = '0';
+                        setTimeout(() => proj.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
