@@ -152,3 +152,20 @@ hamburger.addEventListener('click', () => {
         document.body.style.overflow = 'auto';
     }
 });
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('mobile-open');
+        hamburger.classList.toggle('open', isOpen);
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('mobile-open');
+            hamburger.classList.remove('open');
+        });
+    });
+}
