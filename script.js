@@ -140,3 +140,15 @@ if (ctForm) {
     });
 }
 
+// Example JS toggle
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-open');
+    hamburger.classList.toggle('open');
+    
+    // Toggle scroll lock
+    if(navLinks.classList.contains('mobile-open')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'auto';
+    }
+});
