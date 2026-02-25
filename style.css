@@ -51,7 +51,7 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
     left: 0;
     width: 100%;
     height: 72px;
-    background: rgba(8, 8, 8, 0.85);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     z-index: 2000;
@@ -85,16 +85,20 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
 }
 
 .navbar-logo img {
-    height: 44px;
+    height: 75px;
     width: auto;
     display: block;
-    filter: drop-shadow(0 0 8px rgba(161, 211, 230, 0.45));
+    /* Combined shadows: a sharp glow plus a wide soft blur */
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6)) 
+            drop-shadow(0 0 25px rgba(255, 255, 255, 0.2));
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.navbar-logo:hover img {
-    transform: scale(1.07);
-    filter: drop-shadow(0 0 14px rgba(161, 211, 230, 0.85)) brightness(1.2);
+.navbar-logo img:hover {
+    /* Extra intensity when hovering */
+    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.8)) 
+            drop-shadow(0 0 35px rgba(255, 255, 255, 0.3));
+    transform: scale(1.05);
 }
 
 .navbar-logo .logo-text-fallback {
