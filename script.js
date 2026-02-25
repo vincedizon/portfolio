@@ -122,21 +122,57 @@ document.addEventListener('DOMContentLoaded', () => {
     revealOnScroll();
 });
 
-// --- CONTACT FORM TOAST ---
+// --- CONTACT FORM TOAST WITH FORMSPREE ---
 const ctForm = document.querySelector('.ct-form-glass');
+
 if (ctForm) {
-    ctForm.addEventListener('submit', function (e) {
+    ctForm.addEventListener('submit', async function (e) {
         e.preventDefault();
+        
         const toast = document.getElementById('contact-toast');
-        if (toast) {
-            toast.classList.remove('toast-hidden');
-            toast.classList.add('toast-active');
-            setTimeout(() => {
-                toast.classList.add('toast-hidden');
-                toast.classList.remove('toast-active');
-            }, 3000);
+        const submitBtn = this.querySelector('#submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
+
+        // 1. Show loading state on button
+        submitBtn.disabled = true;
+        submitBtn.innerText = "SENDING...";
+
+        // 2. Prepare data
+        const formData = new FormData(this);
+
+        try {
+            // 3. Send to Formspree
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // 4. Success: Show your custom toast
+                if (toast) {
+                    toast.classList.remove('toast-hidden');
+                    toast.classList.add('toast-active');
+                    
+                    setTimeout(() => {
+                        toast.classList.add('toast-hidden');
+                        toast.classList.remove('toast-active');
+                    }, 4000); // Increased slightly for better readability
+                }
+                this.reset();
+            } else {
+                // Error handling
+                alert("Oops! There was a problem submitting your form.");
+            }
+        } catch (error) {
+            alert("Connection error. Please try again later.");
+        } finally {
+            // 5. Restore button state
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         }
-        this.reset();
     });
 }
 

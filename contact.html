@@ -64,12 +64,12 @@
             </div>
 
             <div class="ct-form-side">
-                <form id="contact-form" class="ct-form-glass" name="portfolio-contact" method="POST" data-netlify="true">
-                    <input type="hidden" name="form-name" value="portfolio-contact" />
+                <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contact-form" class="ct-form-glass">
+                    <input type="hidden" name="_subject" value="New Portfolio Message from Maverick Vince">
                     
                     <div class="ct-input-wrapper">
                         <label>YOUR NAME</label>
-                        <input type="text" name="name" placeholder="Maverick..." required>
+                        <input type="text" name="name" placeholder="Your Name" required>
                     </div>
                     <div class="ct-input-wrapper">
                         <label>YOUR EMAIL</label>
@@ -79,6 +79,9 @@
                         <label>YOUR MESSAGE</label>
                         <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
                     </div>
+                    
+                    <input type="text" name="_gotcha" style="display:none">
+
                     <button type="submit" id="submit-btn" class="btn ct-submit">
                         SEND MESSAGE <span>→</span>
                     </button>
