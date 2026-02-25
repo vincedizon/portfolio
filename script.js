@@ -121,55 +121,44 @@ document.addEventListener('DOMContentLoaded', () => {
     handleHover();
     revealOnScroll();
 });
-
-// --- CONTACT FORM TOAST WITH FORMSPREE ---
-const ctForm = document.querySelector('.ct-form-glass');
+// Contact form
+const ctForm = document.getElementById('contact-form');
 
 if (ctForm) {
     ctForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevents page reload
         
         const toast = document.getElementById('contact-toast');
-        const submitBtn = this.querySelector('#submit-btn');
+        const submitBtn = document.getElementById('submit-btn');
         const originalBtnText = submitBtn.innerHTML;
 
-        // 1. Show loading state on button
+        // Change button state
         submitBtn.disabled = true;
         submitBtn.innerText = "SENDING...";
 
-        // 2. Prepare data
-        const formData = new FormData(this);
-
         try {
-            // 3. Send to Formspree
             const response = await fetch(this.action, {
                 method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                // 4. Success: Show your custom toast
-                if (toast) {
-                    toast.classList.remove('toast-hidden');
-                    toast.classList.add('toast-active');
-                    
-                    setTimeout(() => {
-                        toast.classList.add('toast-hidden');
-                        toast.classList.remove('toast-active');
-                    }, 4000); // Increased slightly for better readability
-                }
+                // Show Success Toast
+                toast.classList.remove('toast-hidden');
+                toast.classList.add('toast-active');
+                
                 this.reset();
+                setTimeout(() => {
+                    toast.classList.remove('toast-active');
+                    toast.classList.add('toast-hidden');
+                }, 4000);
             } else {
-                // Error handling
-                alert("Oops! There was a problem submitting your form.");
+                alert("Submission failed. Please try again.");
             }
         } catch (error) {
-            alert("Connection error. Please try again later.");
+            alert("Network error. Check your connection.");
         } finally {
-            // 5. Restore button state
             submitBtn.disabled = false;
             submitBtn.innerHTML = originalBtnText;
         }

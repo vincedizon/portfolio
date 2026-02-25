@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Maverick Vince G Dizon</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
     <link rel="icon" type="image/png" href="asset/logo.png">
+    
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <div class="cursor-dot"></div>
@@ -17,17 +20,17 @@
             <a href="index.html" class="navbar-logo">
                 <img src="asset/logo.png" alt="MVD Logo">
             </a>
-            <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
-            <div class="nav-links" id="nav-links" role="menubar">
-            <a href="index.html" role="menuitem">Home</a>
-            <a href="about.html" role="menuitem">About</a>
-            <a href="project.html" role="menuitem">Project</a>
-            <a href="resume.html" role="menuitem">Resume</a>
-            <a href="blog.html" role="menuitem">Blog</a>
-            <a href="contact.html" role="menuitem">Contact</a>
-        </div>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="project.html">Project</a>
+                <a href="resume.html">Resume</a>
+                <a href="blog.html">Blog</a>
+                <a href="contact.html">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -45,31 +48,19 @@
                         <span class="ct-label">EMAIL ME</span>
                         <a href="mailto:vdizon499@gmail.com" class="ct-link">vdizon499@gmail.com</a>
                     </div>
-
                     <div class="ct-info-box">
                         <span class="ct-icon">🌍</span>
                         <span class="ct-label">LOCATION</span>
                         <p class="ct-text-info">Pampanga, Philippines</p>
                     </div>
-
-                    <div class="ct-info-box">
-                        <span class="ct-icon">🔗</span>
-                        <span class="ct-label">FOLLOW</span>
-                        <div class="ct-social-flex">
-                            <a href="https://www.linkedin.com/in/vincedizon/" target="_blank">LINKEDIN</a>
-                            <a href="https://github.com/vincedizon" target="_blank">GITHUB</a>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="ct-form-side">
-                <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" id="contact-form" class="ct-form-glass">
-                    <input type="hidden" name="_subject" value="New Portfolio Message from Maverick Vince">
-                    
+                <form action="https://formspree.io/f/xpqjygkd" method="POST" id="contact-form" class="ct-form-glass">
                     <div class="ct-input-wrapper">
                         <label>YOUR NAME</label>
-                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Maverick..." required>
                     </div>
                     <div class="ct-input-wrapper">
                         <label>YOUR EMAIL</label>
@@ -80,8 +71,6 @@
                         <textarea name="message" rows="4" placeholder="How can I help you?" required></textarea>
                     </div>
                     
-                    <input type="text" name="_gotcha" style="display:none">
-
                     <button type="submit" id="submit-btn" class="btn ct-submit">
                         SEND MESSAGE <span>→</span>
                     </button>
@@ -98,17 +87,7 @@
                 <p class="toast-sub">I'll get back to you soon.</p>
             </div>
         </div>
-        <div class="toast-progress"></div>
     </div>
-
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p>© 2026 MAVERICK VINCE G DIZON | 
-                <a href="https://www.linkedin.com/in/vincedizon/" target="_blank">LINKEDIN</a> | 
-                <a href="https://github.com/vincedizon" target="_blank">GITHUB</a>
-            </p>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
