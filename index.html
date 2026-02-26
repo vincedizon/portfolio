@@ -12,6 +12,53 @@
     <link rel="icon" type="image/png" href="asset/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Hero school tag ── */
+        .hero-school {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            margin-top: 6px;
+            margin-bottom: 1.2rem;
+        }
+        /* ── Scroll label ── */
+        .scroll-label {
+            display: block;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.25);
+            text-align: center;
+            margin-top: 8px;
+        }
+        /* ── Featured card gold border ── */
+        .fp-featured-card {
+            border: 1px solid rgba(201,168,76,0.3) !important;
+            position: relative;
+        }
+        .fp-featured-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(201,168,76,0.04), transparent);
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* ── Featured tag gold ── */
+        .fp-featured-tag {
+            color: #c9a84c !important;
+            border-color: rgba(201,168,76,0.3) !important;
+            background: rgba(201,168,76,0.08) !important;
+        }
+        /* ── 4-col stats grid ── */
+        .stats-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+    </style>
 </head>
 <body>
 
@@ -46,6 +93,7 @@
                     <span class="pulse-dot"></span>
                     <span class="status-text">Available for 2026 Internships</span>
                 </div>
+                <div class="hero-school">Holy Angel University &nbsp;·&nbsp; Pampanga, PH</div>
 
                 <h1 class="reveal-text">
                     <span class="line-wrap"><span class="line">MAVERICK VINCE</span></span>
@@ -53,12 +101,13 @@
                 </h1>
 
                 <div class="reveal-subtext">
-                    <p>I am a <span class="typed-text"></span></p>
+                    <p>I am an <span class="typed-text"></span></p>
                 </div>
 
                 <div class="cta-group">
                     <a href="project.html" class="btn">VIEW PROJECTS</a>
                     <a href="contact.html" class="btn outline">CONTACT ME</a>
+                    <a href="resume.html" class="btn outline">↗ RESUME</a>
                 </div>
             </div>
 
@@ -71,16 +120,17 @@
 
         <div class="scroll-down">
             <div class="mouse"></div>
+            <span class="scroll-label">SCROLL</span>
         </div>
     </main>
 
     <section class="tech-stack-ribbon">
         <div class="scroll-container">
             <div class="scroll-content">
-                <span>REACT</span><span>NODE.JS</span><span>MONGODB</span><span>JAVASCRIPT</span><span>TYPESCRIPT</span><span>EXPRESS</span><span>SQL</span><span>UI/UX</span>
+                <span>ANGULAR</span><span>NODE.JS</span><span>MONGODB</span><span>JAVASCRIPT</span><span>TYPESCRIPT</span><span>EXPRESS</span><span>JAVA</span><span>UI/UX</span><span>EMAILJS</span>
             </div>
             <div class="scroll-content" aria-hidden="true">
-                <span>REACT</span><span>NODE.JS</span><span>MONGODB</span><span>JAVASCRIPT</span><span>TYPESCRIPT</span><span>EXPRESS</span><span>SQL</span><span>UI/UX</span>
+                <span>ANGULAR</span><span>NODE.JS</span><span>MONGODB</span><span>JAVASCRIPT</span><span>TYPESCRIPT</span><span>EXPRESS</span><span>JAVA</span><span>UI/UX</span><span>EMAILJS</span>
             </div>
         </div>
     </section>
@@ -96,8 +146,12 @@
                 <p>Industry Certifications</p>
             </div>
             <div class="stat-card">
-                <h3>3+</h3>
+                <h3>5+</h3>
                 <p>Projects Built</p>
+            </div>
+            <div class="stat-card">
+                <h3>2026</h3>
+                <p>Available for Hire</p>
             </div>
         </div>
     </section>
@@ -108,17 +162,17 @@
             <p class="wid-eyebrow">WHAT I DO</p>
             <div class="wid-grid">
                 <div class="wid-card">
-                    <span class="wid-icon">⬡</span>
+                    <span class="wid-icon">&#60;/&#62;</span>
                     <h3>FRONT-END DEV</h3>
                     <p>Building responsive, accessible interfaces with HTML, CSS, JavaScript, Angular, and React.</p>
                 </div>
                 <div class="wid-card">
-                    <span class="wid-icon">⬡</span>
+                    <span class="wid-icon">{ }</span>
                     <h3>BACK-END DEV</h3>
                     <p>Designing APIs and server logic using Node.js, Express, and database systems like MongoDB.</p>
                 </div>
                 <div class="wid-card">
-                    <span class="wid-icon">⬡</span>
+                    <span class="wid-icon">✦</span>
                     <h3>UI / UX DESIGN</h3>
                     <p>Crafting clean, intuitive user experiences grounded in modern design principles and usability.</p>
                 </div>
@@ -135,29 +189,67 @@
             <!-- PROJECT GRID -->
             <div class="fp-projects-grid">
 
-                <!-- CARD 01 — ANGULAR -->
-                <article class="fp-proj-card" aria-label="Dynamic Company Website project">
+                <!-- CARD 01 — SKYPASS (Featured) -->
+                <article class="fp-proj-card fp-featured-card" aria-label="SkyPass Online Passenger Registration project">
                     <div class="fp-proj-mockup">
                         <div class="fp-mockup-bar" aria-hidden="true">
                             <span></span><span></span><span></span>
-                            <span class="fp-mockup-url">prelim-project.netlify.app</span>
+                            <span class="fp-mockup-url">SkyPass — Passenger Registration</span>
                         </div>
-                        <div class="fp-mockup-screen">
-                            <div class="fp-project-preview"></div>
+                        <div class="fp-mockup-screen" style="background:#0a1628;padding:0;overflow:hidden;">
+                            <div style="background:#060d1a;border-bottom:1px solid rgba(201,168,76,0.2);padding:7px 12px;display:flex;align-items:center;gap:6px;">
+                                <span style="font-size:9px;font-weight:800;color:#fff;">Sky<span style="color:#c9a84c;">Pass</span></span>
+                                <span style="font-size:6px;color:rgba(201,168,76,0.5);letter-spacing:2px;text-transform:uppercase;">Online Passenger Registration</span>
+                            </div>
+                            <div style="padding:10px 14px 8px;text-align:center;border-bottom:1px solid rgba(201,168,76,0.08);">
+                                <div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:3px;">Welcome Aboard</div>
+                                <div style="font-size:7px;color:rgba(255,255,255,0.4);">Complete your registration to proceed with online check-in.</div>
+                            </div>
+                            <div style="display:flex;justify-content:center;padding:7px 12px;background:rgba(6,13,26,0.5);border-bottom:1px solid rgba(201,168,76,0.08);gap:4px;">
+                                <div style="display:flex;align-items:center;gap:3px;">
+                                    <div style="width:14px;height:14px;border-radius:50%;background:#c9a84c;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#060d1a;">1</div>
+                                    <span style="font-size:7px;color:#c9a84c;font-weight:700;">Personal Info</span>
+                                </div>
+                                <div style="width:20px;height:1px;background:rgba(201,168,76,0.3);align-self:center;margin:0 4px;"></div>
+                                <div style="display:flex;align-items:center;gap:3px;">
+                                    <div style="width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.3);">2</div>
+                                    <span style="font-size:7px;color:rgba(255,255,255,0.3);">Flight Details</span>
+                                </div>
+                                <div style="width:20px;height:1px;background:rgba(255,255,255,0.1);align-self:center;margin:0 4px;"></div>
+                                <div style="display:flex;align-items:center;gap:3px;">
+                                    <div style="width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.3);">3</div>
+                                    <span style="font-size:7px;color:rgba(255,255,255,0.3);">Confirm</span>
+                                </div>
+                            </div>
+                            <div style="padding:8px 12px;display:flex;flex-direction:column;gap:4px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                                    <div style="border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:6px 8px;background:rgba(6,13,26,0.5);">
+                                        <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px;">First Name *</div>
+                                        <div style="font-size:8px;color:rgba(255,255,255,0.6);">Juan</div>
+                                    </div>
+                                    <div style="border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:6px 8px;background:rgba(6,13,26,0.5);">
+                                        <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px;">Email *</div>
+                                        <div style="font-size:8px;color:rgba(255,255,255,0.6);">passenger@mail.com</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;justify-content:flex-end;">
+                                    <div style="background:#c9a84c;color:#060d1a;font-size:7px;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:3px;">NEXT →</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="fp-proj-info">
-                        <span class="fp-tag">ANGULAR · TYPESCRIPT · CSS</span>
-                        <h3>DYNAMIC COMPANY WEBSITE</h3>
-                        <p>An enterprise portal with a searchable employee directory, dynamic data filtering, and a professional dark mode UI — built entirely in Angular with TypeScript.</p>
+                        <span class="fp-tag fp-featured-tag">✦ FEATURED &nbsp;·&nbsp; ANGULAR · EMAILJS · ANGULAR MATERIAL</span>
+                        <h3>SKYPASS — PASSENGER REGISTRATION</h3>
+                        <p>Full online check-in system with a 3-step Angular Material Stepper, 12+ custom form validators, printable boarding pass, and automated email ticket delivery via EmailJS.</p>
                         <div class="fp-actions">
-                            <a href="https://prelim-project.netlify.app" target="_blank" rel="noopener noreferrer" class="btn-small" aria-label="View live demo of Dynamic Company Website">↗ LIVE DEMO</a>
-                            <a href="https://github.com/vincedizon/dynamic-company-website/tree/e29380a14e99a57ff53f8c0fd449ebb79f3ae36f/src" target="_blank" rel="noopener noreferrer" class="btn-small outline" aria-label="View GitHub repository for Dynamic Company Website">GITHUB</a>
+                            <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer" class="btn-small" aria-label="View GitHub for SkyPass">↗ GITHUB</a>
+                            <span class="btn-small outline disabled">LOCAL DEMO</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- CARD 02 — NODE.JS -->
+                <!-- CARD 02 — ACADEMIA -->
                 <article class="fp-proj-card" aria-label="Academia Student Management System project">
                     <div class="fp-proj-mockup">
                         <div class="fp-mockup-bar" aria-hidden="true">
@@ -198,13 +290,13 @@
                         <h3>ACADEMIA STUDENT MANAGEMENT</h3>
                         <p>Full-stack student records system with JWT authentication, role-based access control, CRUD operations, CSV export, and real-time dashboard analytics.</p>
                         <div class="fp-actions">
-                            <a href="https://github.com/vincedizon/academia-student-management" target="_blank" rel="noopener noreferrer" class="btn-small" aria-label="View GitHub repository for Academia Student Management System">↗ GITHUB</a>
-                            <span class="btn-small outline disabled" aria-label="Live demo coming soon">COMING SOON</span>
+                            <a href="https://github.com/vincedizon/academia-student-management" target="_blank" rel="noopener noreferrer" class="btn-small" aria-label="View GitHub for Academia">↗ GITHUB</a>
+                            <span class="btn-small outline disabled">COMING SOON</span>
                         </div>
                     </div>
                 </article>
 
-                <!-- CARD 03 — HTML/CSS/JS -->
+                <!-- CARD 03 — SILUNG COFFEE -->
                 <article class="fp-proj-card" aria-label="Silung Coffee Website project">
                     <div class="fp-proj-mockup">
                         <div class="fp-mockup-bar" aria-hidden="true">
@@ -244,8 +336,8 @@
                         <h3>SILUNG COFFEE WEBSITE</h3>
                         <p>Multi-page brand website for a cultural café in Pampanga. Features an animated hero, full menu layout, customer testimonials, and responsive design — no framework used.</p>
                         <div class="fp-actions">
-                            <a href="https://vincedizon.github.io/coffee/" target="_blank" rel="noopener noreferrer" class="btn-small" aria-label="View live Silung Coffee website">↗ LIVE SITE</a>
-                            <a href="https://github.com/vincedizon/coffee" target="_blank" rel="noopener noreferrer" class="btn-small outline" aria-label="View GitHub repository for Silung Coffee Website">GITHUB</a>
+                            <a href="https://vincedizon.github.io/coffee/" target="_blank" rel="noopener noreferrer" class="btn-small">↗ LIVE SITE</a>
+                            <a href="https://github.com/vincedizon/coffee" target="_blank" rel="noopener noreferrer" class="btn-small outline">GITHUB</a>
                         </div>
                     </div>
                 </article>
@@ -264,10 +356,11 @@
                 © 2026 MAVERICK VINCE G DIZON | 
                 <a href="https://www.linkedin.com/in/vincedizon/" target="_blank" rel="noopener noreferrer">LINKEDIN</a> | 
                 <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer">GITHUB</a> | 
-                <a href="mailto:vdizon499@gmail.com">VDIZON499@GMAIL.COM</a>
+                <a href="mailto:vdizon499@gmail.com">vdizon499@gmail.com</a>
             </p>
         </div>
     </footer>
+
 
     <script src="script.js"></script>
     <script>

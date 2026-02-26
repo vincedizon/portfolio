@@ -4,13 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Maverick Vince G Dizon</title>
-    <meta name="description" content="Detailed breakdown of projects by Maverick Vince G. Dizon including a Clothing Management System, Dynamic Company Website, and Academia Student Management System.">
+    <meta name="description" content="Detailed breakdown of projects by Maverick Vince G. Dizon including SkyPass, Academia, Angular, and more.">
     <meta property="og:title" content="Projects | Maverick Vince G Dizon">
     <meta property="og:description" content="Technical projects built with Java, Angular, MongoDB, Node.js, and more by Maverick Vince G. Dizon.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="asset/logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Stats Bar ── */
+        .projects-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 2.5rem auto 0;
+            max-width: 560px;
+            border: 1px solid rgba(201,168,76,0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .stat-item {
+            flex: 1;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            border-right: 1px solid rgba(201,168,76,0.15);
+            transition: background 0.3s;
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-item:hover { background: rgba(201,168,76,0.06); }
+        .stat-num {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #c9a84c;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+        }
+
+        /* ── Featured Badge ── */
+        .project-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+            border: 1px solid rgba(201,168,76,0.35);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 0.62rem;
+            letter-spacing: 2px;
+            color: #c9a84c;
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+            font-weight: 700;
+        }
+        .project-featured-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #c9a84c;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        /* ── Project number ── */
+        .skill-num {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: rgba(201,168,76,0.6);
+            margin-bottom: 0.6rem;
+        }
+        .skill-num::after {
+            content: '';
+            flex: 1;
+            max-width: 40px;
+            height: 1px;
+            background: rgba(201,168,76,0.3);
+        }
+
+        /* ── Complexity bar ── */
+        .proj-complexity { margin: 1rem 0 1.4rem; }
+        .proj-complexity-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 6px;
+        }
+        .proj-complexity-label span:last-child { color: #c9a84c; }
+        .proj-complexity-track {
+            height: 3px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .proj-complexity-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, #c9a84c, #e8c96a);
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 0;
+        }
+
+        /* ── Tech pills ── */
+        .proj-tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.2rem;
+        }
+        .proj-tech-pills span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.62rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: rgba(201,168,76,0.08);
+            border: 1px solid rgba(201,168,76,0.2);
+            color: rgba(201,168,76,0.85);
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        .proj-tech-pills span:hover {
+            background: rgba(201,168,76,0.15);
+            border-color: rgba(201,168,76,0.4);
+            transform: translateY(-1px);
+        }
+
+        /* ── Detail group ── */
+        .detail-group p {
+            font-size: 0.88rem;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 0.75rem;
+            padding-left: 0.9rem;
+            border-left: 2px solid rgba(201,168,76,0.15);
+        }
+        .detail-group p strong { color: rgba(255,255,255,0.85); }
+
+        /* ── Metrics ── */
+        .proj-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 1.2rem 0;
+        }
+        .proj-metric {
+            text-align: center;
+            padding: 10px 6px;
+            background: rgba(201,168,76,0.04);
+            border: 1px solid rgba(201,168,76,0.12);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .proj-metric:hover {
+            background: rgba(201,168,76,0.08);
+            border-color: rgba(201,168,76,0.25);
+        }
+        .proj-metric-val {
+            display: block;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #c9a84c;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .proj-metric-lbl {
+            font-size: 0.55rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ── Section divider ── */
+        .proj-section-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 4rem 0 3rem;
+            opacity: 0.4;
+        }
+        .proj-section-divider::before,
+        .proj-section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+        }
+        .proj-section-divider span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            color: rgba(201,168,76,0.6);
+            text-transform: uppercase;
+        }
+
+        /* ── Scroll reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .stat-num { font-size: 1.2rem; }
+            .proj-metrics { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -19,49 +239,424 @@
     <div class="cursor-outline"></div>
 
     <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="navbar-logo">
-            <img src="asset/logo.png" alt="MVD Logo">
-        </a>
-        <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <div class="nav-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="asset/logo.png" alt="MVD Logo">
+            </a>
+            <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span><span></span><span></span>
             </button>
-       <div class="nav-links" id="nav-links" role="menubar">
-            <a href="index.html" role="menuitem">Home</a>
-            <a href="about.html" role="menuitem">About</a>
-            <a href="project.html" role="menuitem">Project</a>
-            <a href="resume.html" role="menuitem">Resume</a>
-            <a href="blog.html" role="menuitem">Blog</a>
-            <a href="contact.html" role="menuitem">Contact</a>
+            <div class="nav-links" id="nav-links" role="menubar">
+                <a href="index.html" role="menuitem">Home</a>
+                <a href="about.html" role="menuitem">About</a>
+                <a href="project.html" role="menuitem">Project</a>
+                <a href="resume.html" role="menuitem">Resume</a>
+                <a href="blog.html" role="menuitem">Blog</a>
+                <a href="contact.html" role="menuitem">Contact</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-     <main class="projects-detail-wrapper" role="main">
+    <main class="projects-detail-wrapper" role="main">
 
         <!-- INTRO -->
         <section class="projects-intro">
             <p class="wid-eyebrow">MY WORK</p>
             <h1 class="section-heading">PROJECTS</h1>
-            <p class="bio-paragraph">A comprehensive look at my technical work — covering system architecture, core features, and the tools behind each build.</p>
+            <p class="bio-paragraph">A comprehensive look at my technical work - covering system architecture, core features, and the tools behind each build.</p>
+
+            <!-- Stats Bar -->
+            <div class="projects-stats reveal">
+                <div class="stat-item">
+                    <span class="stat-num">5</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">8+</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">3</span>
+                    <span class="stat-label">Live Demos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">2026</span>
+                    <span class="stat-label">Latest Build</span>
+                </div>
+            </div>
 
             <!-- FILTER TAGS -->
-            <div class="proj-filter">
+            <div class="proj-filter" style="margin-top:2rem;">
                 <button class="filter-btn active" data-filter="all">ALL</button>
-                <button class="filter-btn" data-filter="java">JAVA</button>
                 <button class="filter-btn" data-filter="angular">ANGULAR</button>
                 <button class="filter-btn" data-filter="nodejs">NODE.JS</button>
                 <button class="filter-btn" data-filter="html">HTML/CSS</button>
+                <button class="filter-btn" data-filter="java">JAVA</button>
             </div>
         </section>
 
-        <!-- PROJECT 01 -->
-        <section class="project-detail-block" data-tags="java">
+        <!-- PROJECT 01 — SKYPASS -->
+        <section class="project-detail-block reverse reveal" data-tags="angular">
             <div class="project-content">
-                <span class="skill-num">01 / JAVA OOP</span>
+                <div class="project-featured-badge">✦ Featured Project</div>
+                <span class="skill-num">01 / ANGULAR + EMAILJS</span>
+                <h2>SKYPASS — ONLINE PASSENGER REGISTRATION</h2>
+                <div class="proj-tech-pills">
+                    <span>Angular</span><span>TypeScript</span><span>Angular Material</span><span>EmailJS</span><span>Reactive Forms</span>
+                </div>
+                <div class="proj-metrics">
+                    <div class="proj-metric">
+                        <span class="proj-metric-val">3</span>
+                        <span class="proj-metric-lbl">Form Steps</span>
+                    </div>
+                    <div class="proj-metric">
+                        <span class="proj-metric-val">12+</span>
+                        <span class="proj-metric-lbl">Validators</span>
+                    </div>
+                    <div class="proj-metric">
+                        <span class="proj-metric-val">✉</span>
+                        <span class="proj-metric-lbl">Email API</span>
+                    </div>
+                </div>
+                <div class="proj-complexity">
+                    <div class="proj-complexity-label"><span>Complexity</span><span>Advanced</span></div>
+                    <div class="proj-complexity-track">
+                        <div class="proj-complexity-fill" data-width="92%"></div>
+                    </div>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> A fully functional airline passenger registration and online check-in system with a dark-themed UI inspired by real aviation boarding passes.</p>
+                    <p><strong>Features:</strong> 3-step Angular Material Stepper, real-time validation (passport format, age gate, flight number pattern), dynamic add-on chip selection, baggage weight slider, printable boarding pass, and automated email ticket delivery via EmailJS.</p>
+                    <p><strong>Key Learning:</strong> Implemented complex reactive form validation with custom validators, integrated a third-party email API for client-side transactional email, and built an animated starfield + cloud background using procedural DOM generation.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <a href="https://skyp-ivory.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-small outline">LIVE DEMO</a>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">SkyPass — Passenger Registration</span>
+                        </div>
+                        <div class="pm-browser-body" style="background:#0a1628;padding:0;overflow:hidden;">
+                            <div style="background:#060d1a;border-bottom:1px solid rgba(201,168,76,0.2);padding:7px 12px;display:flex;align-items:center;gap:6px;">
+                                <span style="font-size:9px;font-weight:800;color:#fff;">Sky<span style="color:#c9a84c;">Pass</span></span>
+                                <span style="font-size:6px;color:rgba(201,168,76,0.5);letter-spacing:2px;text-transform:uppercase;">Online Passenger Registration</span>
+                            </div>
+                            <div style="padding:12px 14px 8px;text-align:center;border-bottom:1px solid rgba(201,168,76,0.08);">
+                                <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:3px;">Welcome Aboard</div>
+                                <div style="font-size:7px;color:rgba(255,255,255,0.4);">Complete your passenger registration to proceed with online check-in.</div>
+                            </div>
+                            <div style="display:flex;justify-content:center;padding:8px 12px;background:rgba(6,13,26,0.5);border-bottom:1px solid rgba(201,168,76,0.08);gap:4px;">
+                                <div style="display:flex;align-items:center;gap:4px;">
+                                    <div style="width:16px;height:16px;border-radius:50%;background:#c9a84c;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;color:#060d1a;">1</div>
+                                    <span style="font-size:7px;color:#c9a84c;font-weight:700;">Personal Info</span>
+                                </div>
+                                <div style="width:28px;height:1px;background:rgba(201,168,76,0.3);align-self:center;margin:0 5px;"></div>
+                                <div style="display:flex;align-items:center;gap:4px;">
+                                    <div style="width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.3);">2</div>
+                                    <span style="font-size:7px;color:rgba(255,255,255,0.3);">Flight Details</span>
+                                </div>
+                                <div style="width:28px;height:1px;background:rgba(255,255,255,0.1);align-self:center;margin:0 5px;"></div>
+                                <div style="display:flex;align-items:center;gap:4px;">
+                                    <div style="width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.3);">3</div>
+                                    <span style="font-size:7px;color:rgba(255,255,255,0.3);">Confirm</span>
+                                </div>
+                            </div>
+                            <div style="padding:10px 12px;display:flex;flex-direction:column;gap:5px;">
+                                <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
+                                    <div style="border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:7px 8px;background:rgba(6,13,26,0.5);">
+                                        <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px;">First Name *</div>
+                                        <div style="font-size:8px;color:rgba(255,255,255,0.6);">Juan</div>
+                                    </div>
+                                    <div style="border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:7px 8px;background:rgba(6,13,26,0.5);">
+                                        <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px;">Last Name *</div>
+                                        <div style="font-size:8px;color:rgba(255,255,255,0.6);">Dela Cruz</div>
+                                    </div>
+                                </div>
+                                <div style="border:1px solid rgba(201,168,76,0.25);border-radius:4px;padding:7px 8px;background:rgba(6,13,26,0.5);">
+                                    <div style="font-size:6px;color:rgba(255,255,255,0.35);margin-bottom:2px;">Email Address *</div>
+                                    <div style="font-size:8px;color:rgba(255,255,255,0.6);">passenger@email.com</div>
+                                </div>
+                                <div style="display:flex;justify-content:flex-end;margin-top:2px;">
+                                    <div style="background:#c9a84c;color:#060d1a;font-size:7px;font-weight:800;letter-spacing:1px;padding:5px 12px;border-radius:3px;">NEXT: FLIGHT DETAILS →</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">event-register.component.ts</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">@Component</span>({ standalone: <span class="pm-kw">true</span> })</div>
+                            <div class="pm-code-line"><span class="pm-kw">export class</span> <span class="pm-cls">EventRegisterComponent</span> {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-fn">personalForm</span> = <span class="pm-kw">new</span> <span class="pm-cls">FormGroup</span>({</div>
+                            <div class="pm-code-line pm-indent2">email: <span class="pm-kw">new</span> <span class="pm-cls">FormControl</span>(<span class="pm-str">''</span>,</div>
+                            <div class="pm-code-line pm-indent2">  [Validators.<span class="pm-fn">required</span>, Validators.<span class="pm-fn">email</span>]),</div>
+                            <div class="pm-code-line pm-indent2">passportNo: <span class="pm-kw">new</span> <span class="pm-cls">FormControl</span>(<span class="pm-str">''</span>,</div>
+                            <div class="pm-code-line pm-indent2">  [<span class="pm-fn">passportValidator</span>]),</div>
+                            <div class="pm-code-line pm-indent">});</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-fn">sendEmailTicket</span>() {</div>
+                            <div class="pm-code-line pm-indent2">emailjs.<span class="pm-fn">send</span>(SVC, TPL, params);</div>
+                            <div class="pm-code-line pm-indent">}</div>
+                            <div class="pm-code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="proj-section-divider reveal"><span>◆</span></div>
+
+        <!-- PROJECT 02 — ACADEMIA -->
+        <section class="project-detail-block reveal" data-tags="nodejs">
+            <div class="project-content">
+                <span class="skill-num">02 / NODE.JS + MONGODB</span>
+                <h2>ACADEMIA STUDENT MANAGEMENT SYSTEM</h2>
+                <div class="proj-tech-pills">
+                    <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>REST API</span><span>Vanilla JS</span>
+                </div>
+                <div class="proj-metrics">
+                    <div class="proj-metric"><span class="proj-metric-val">JWT</span><span class="proj-metric-lbl">Auth</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">CRUD</span><span class="proj-metric-lbl">Operations</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">MVC</span><span class="proj-metric-lbl">Architecture</span></div>
+                </div>
+                <div class="proj-complexity">
+                    <div class="proj-complexity-label"><span>Complexity</span><span>Advanced</span></div>
+                    <div class="proj-complexity-track"><div class="proj-complexity-fill" data-width="85%"></div></div>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> A full-stack web application for managing student records with secure authentication, role-based access control, and a polished dark-themed UI — built entirely without a frontend framework.</p>
+                    <p><strong>Features:</strong> JWT login system with Admin and Viewer roles, full CRUD operations, real-time dashboard with animated stats, searchable and filterable student table with pagination, sortable columns, CSV export, and dark/light mode toggle.</p>
+                    <p><strong>Key Learning:</strong> Designed a proper MVC folder structure separating routes, middleware, config, and views. Implemented stateless JWT authentication and built a RESTful API with Express.js connected to MongoDB.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon/academia-student-management" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <span class="btn-small outline disabled" title="Deployment in progress">COMING SOON</span>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">Academia — Dashboard</span>
+                        </div>
+                        <div class="pm-browser-body" style="background:#0d0f14;padding:12px;display:flex;flex-direction:column;gap:8px;">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+                                <div style="background:#1a1f2e;border:1px solid #252b3b;border-radius:6px;padding:10px;">
+                                    <div style="font-size:18px;font-weight:700;color:#c9a84c;">10</div>
+                                    <div style="font-size:9px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;">Total Students</div>
+                                </div>
+                                <div style="background:#1a1f2e;border:1px solid #252b3b;border-radius:6px;padding:10px;">
+                                    <div style="font-size:18px;font-weight:700;color:#4cbb7f;">8</div>
+                                    <div style="font-size:9px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;">Active</div>
+                                </div>
+                            </div>
+                            <div style="background:#1a1f2e;border:1px solid #252b3b;border-radius:6px;overflow:hidden;">
+                                <div style="background:#141720;padding:6px 10px;font-size:9px;color:#6b7280;text-transform:uppercase;letter-spacing:1px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;"><span>NAME</span><span>COURSE</span><span>YEAR</span><span>STATUS</span></div>
+                                <div style="padding:6px 10px;font-size:9px;color:#e8eaf0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:1px solid #252b3b;"><span>Vince Dizon</span><span style="color:#5b8dee;">BSIT</span><span>Yr 3</span><span style="color:#4cbb7f;">Active</span></div>
+                                <div style="padding:6px 10px;font-size:9px;color:#e8eaf0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:1px solid #252b3b;"><span>Maria Santos</span><span style="color:#5b8dee;">BSCS</span><span>Yr 2</span><span style="color:#4cbb7f;">Active</span></div>
+                                <div style="padding:6px 10px;font-size:9px;color:#e8eaf0;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-top:1px solid #252b3b;"><span>Carlo Mendoza</span><span style="color:#5b8dee;">BSCS</span><span>Yr 4</span><span style="color:#e05c5c;">Inactive</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">routes/students.js</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">const</span> router = <span class="pm-fn">require</span>(<span class="pm-str">'express'</span>).Router();</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line">router.<span class="pm-fn">get</span>(<span class="pm-str">'/'</span>, <span class="pm-kw">async</span> (req, res) => {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">const</span> students = <span class="pm-kw">await</span> col.<span class="pm-fn">find</span>({});</div>
+                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span>, data: students });</div>
+                            <div class="pm-code-line">});</div>
+                            <div class="pm-code-line">&nbsp;</div>
+                            <div class="pm-code-line">router.<span class="pm-fn">post</span>(<span class="pm-str">'/'</span>, protect, <span class="pm-kw">async</span> (req, res) => {</div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">await</span> col.<span class="pm-fn">insertOne</span>(req.body);</div>
+                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span> });</div>
+                            <div class="pm-code-line">});</div>
+                            <div class="pm-code-line">module.exports = router;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="proj-section-divider reveal"><span>◆</span></div>
+
+        <!-- PROJECT 03 — DYNAMIC COMPANY WEBSITE -->
+        <section class="project-detail-block reverse reveal" data-tags="angular">
+            <div class="project-content">
+                <span class="skill-num">03 / ANGULAR</span>
+                <h2>DYNAMIC COMPANY WEBSITE</h2>
+                <div class="proj-tech-pills">
+                    <span>Angular</span><span>TypeScript</span><span>CSS</span><span>HTML</span>
+                </div>
+                <div class="proj-metrics">
+                    <div class="proj-metric"><span class="proj-metric-val">SPA</span><span class="proj-metric-lbl">Architecture</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">🔍</span><span class="proj-metric-lbl">Live Search</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">TS</span><span class="proj-metric-lbl">Interfaces</span></div>
+                </div>
+                <div class="proj-complexity">
+                    <div class="proj-complexity-label"><span>Complexity</span><span>Intermediate</span></div>
+                    <div class="proj-complexity-track"><div class="proj-complexity-fill" data-width="65%"></div></div>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> An enterprise portal providing a centralized hub for employee and company data with a modern dark-mode UI.</p>
+                    <p><strong>Features:</strong> Searchable employee directory, dynamic data filtering, component-based architecture, and responsive layout.</p>
+                    <p><strong>Key Learning:</strong> Built with Angular's component system and TypeScript interfaces, practicing reactive data flow and modular front-end design.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon/dynamic-company-website/tree/e29380a14e99a57ff53f8c0fd449ebb79f3ae36f/src" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <a href="https://prelim-project.netlify.app" target="_blank" class="btn-small outline">↗ LIVE DEMO</a>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">company-site.app</span>
+                        </div>
+                        <div class="pm-browser-body">
+                            <div class="pm-browser-nav"></div>
+                            <div class="pm-browser-hero"><div class="pm-bh-text"></div><div class="pm-bh-text short"></div></div>
+                            <div class="pm-browser-search"><div class="pm-search-bar">🔍 Search employees...</div></div>
+                            <div class="pm-browser-cards">
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">employee.component.ts</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">@Component</span>({</div>
+                            <div class="pm-code-line pm-indent">selector: <span class="pm-str">'app-employee'</span>,</div>
+                            <div class="pm-code-line pm-indent">templateUrl: <span class="pm-str">'./employee.html'</span></div>
+                            <div class="pm-code-line">})</div>
+                            <div class="pm-code-line"><span class="pm-kw">export class</span> <span class="pm-cls">EmployeeComponent</span> {</div>
+                            <div class="pm-code-line pm-indent">employees: <span class="pm-cls">Employee</span>[] = [];</div>
+                            <div class="pm-code-line">}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="proj-section-divider reveal"><span>◆</span></div>
+
+        <!-- PROJECT 04 — SILUNG COFFEE -->
+        <section class="project-detail-block reveal" data-tags="html">
+            <div class="project-content">
+                <span class="skill-num">04 / HTML · CSS · JS</span>
+                <h2>SILUNG COFFEE WEBSITE</h2>
+                <div class="proj-tech-pills">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span>
+                </div>
+                <div class="proj-metrics">
+                    <div class="proj-metric"><span class="proj-metric-val">8+</span><span class="proj-metric-lbl">Pages</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">0</span><span class="proj-metric-lbl">Frameworks</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">🌐</span><span class="proj-metric-lbl">Live Site</span></div>
+                </div>
+                <div class="proj-complexity">
+                    <div class="proj-complexity-label"><span>Complexity</span><span>Intermediate</span></div>
+                    <div class="proj-complexity-track"><div class="proj-complexity-fill" data-width="60%"></div></div>
+                </div>
+                <div class="detail-group">
+                    <p><strong>Purpose:</strong> A fully designed multi-page website for Silung Coffee — a café inside a cultural center in Pampanga, Philippines. Built to establish the brand's digital presence and showcase the menu, features, and story.</p>
+                    <p><strong>Features:</strong> Multi-page layout (Home, Menu, Features, Contact, Sign-Up), customer testimonials, operating hours, social media integration, animated hero section with Ken Burns effect, and a modern minimal aesthetic.</p>
+                    <p><strong>Key Learning:</strong> Designed a cohesive design system from scratch — typography, color palette, spacing, and component patterns — applied consistently across 8+ pages without a framework.</p>
+                </div>
+                <div class="project-buttons">
+                    <a href="https://github.com/vincedizon/coffee" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
+                    <a href="https://vincedizon.github.io/coffee/" target="_blank" rel="noopener noreferrer" class="btn-small outline">↗ LIVE SITE</a>
+                </div>
+            </div>
+            <div class="project-visuals">
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup browser-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">vincedizon.github.io/coffee</span>
+                        </div>
+                        <div class="pm-browser-body" style="background:#0e0c0a;padding:0;overflow:hidden;">
+                            <div style="background:linear-gradient(160deg,#1a1208 0%,#0e0c0a 100%);padding:16px;border-bottom:1px solid #2a220f;">
+                                <div style="font-size:7px;letter-spacing:3px;color:#c9a84c;margin-bottom:6px;">SILUNG COFFEE</div>
+                                <div style="font-size:13px;font-weight:700;color:#f5f0e8;margin-bottom:4px;">Where Culture Meets Coffee.</div>
+                                <div style="font-size:8px;color:rgba(245,240,232,0.5);margin-bottom:10px;">Inside Kultura ng Pampanga Cultural Center</div>
+                                <div style="display:flex;gap:8px;">
+                                    <div style="background:#c9a84c;color:#0e0c0a;font-size:7px;font-weight:700;letter-spacing:1px;padding:5px 10px;border-radius:2px;">VIEW MENU</div>
+                                    <div style="border:1px solid rgba(201,168,76,0.4);color:#c9a84c;font-size:7px;font-weight:700;letter-spacing:1px;padding:5px 10px;border-radius:2px;">OUR STORY</div>
+                                </div>
+                            </div>
+                            <div style="padding:10px 14px;">
+                                <div style="font-size:7px;letter-spacing:2px;color:#c9a84c;margin-bottom:8px;">MENU HIGHLIGHTS</div>
+                                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
+                                    <div style="background:#1a1208;border:1px solid #2a220f;border-radius:4px;padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:4px;">☕</div><div style="font-size:7px;color:#f5f0e8;">Kapeng Barako</div><div style="font-size:7px;color:#c9a84c;">₱85</div></div>
+                                    <div style="background:#1a1208;border:1px solid #2a220f;border-radius:4px;padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:4px;">🍮</div><div style="font-size:7px;color:#f5f0e8;">Leche Flan Latte</div><div style="font-size:7px;color:#c9a84c;">₱120</div></div>
+                                    <div style="background:#1a1208;border:1px solid #2a220f;border-radius:4px;padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:4px;">🫙</div><div style="font-size:7px;color:#f5f0e8;">Cold Brew</div><div style="font-size:7px;color:#c9a84c;">₱110</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-mockup-wrapper">
+                    <div class="proj-mockup code-mockup">
+                        <div class="pm-topbar">
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
+                            <span class="pm-title">index.html — Hero Section</span>
+                        </div>
+                        <div class="pm-body">
+                            <div class="pm-code-line"><span class="pm-kw">&lt;section</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero"</span><span class="pm-kw">&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-bg"</span><span class="pm-kw">&gt;&lt;/div&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-content"</span><span class="pm-kw">&gt;</span></div>
+                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;p&gt;</span>SILUNG COFFEE<span class="pm-kw">&lt;/p&gt;</span></div>
+                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;h1&gt;</span>Where Culture Meets Coffee.<span class="pm-kw">&lt;/h1&gt;</span></div>
+                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;/div&gt;</span></div>
+                            <div class="pm-code-line"><span class="pm-kw">&lt;/section&gt;</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="proj-section-divider reveal"><span>◆</span></div>
+
+        <!-- PROJECT 05 — CLOTHING MANAGEMENT -->
+        <section class="project-detail-block reverse reveal" data-tags="java">
+            <div class="project-content">
+                <span class="skill-num">05 / JAVA OOP</span>
                 <h2>CLOTHING MANAGEMENT SYSTEM</h2>
                 <div class="proj-tech-pills">
                     <span>Java</span><span>OOP</span><span>VS Code</span>
+                </div>
+                <div class="proj-metrics">
+                    <div class="proj-metric"><span class="proj-metric-val">OOP</span><span class="proj-metric-lbl">Paradigm</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">3</span><span class="proj-metric-lbl">Principles</span></div>
+                    <div class="proj-metric"><span class="proj-metric-val">⚡</span><span class="proj-metric-lbl">Real-time</span></div>
+                </div>
+                <div class="proj-complexity">
+                    <div class="proj-complexity-label"><span>Complexity</span><span>Foundational</span></div>
+                    <div class="proj-complexity-track"><div class="proj-complexity-fill" data-width="40%"></div></div>
                 </div>
                 <div class="detail-group">
                     <p><strong>Purpose:</strong> An inventory solution designed for clothing wholesalers to streamline day-to-day operations and reduce manual tracking errors.</p>
@@ -70,16 +665,14 @@
                 </div>
                 <div class="project-buttons">
                     <a href="https://github.com/vincedizon/oop/tree/main/OOP" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
-                    <span class="btn-small outline disabled" title="Live demo not available for Java desktop apps">NO LIVE DEMO</span>
+                    <span class="btn-small outline" title="Live demo not available for Java desktop apps">NO LIVE DEMO</span>
                 </div>
             </div>
             <div class="project-visuals">
                 <div class="proj-mockup-wrapper">
                     <div class="proj-mockup java-mockup">
                         <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
                             <span class="pm-title">ClothingMS.java</span>
                         </div>
                         <div class="pm-body">
@@ -97,9 +690,7 @@
                 <div class="proj-mockup-wrapper">
                     <div class="proj-mockup ui-mockup">
                         <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
+                            <span class="pm-dot red"></span><span class="pm-dot yellow"></span><span class="pm-dot green"></span>
                             <span class="pm-title">Inventory Dashboard</span>
                         </div>
                         <div class="pm-ui-body">
@@ -118,243 +709,6 @@
             </div>
         </section>
 
-        <!-- PROJECT 02 -->
-        <section class="project-detail-block reverse" data-tags="angular">
-            <div class="project-content">
-                <span class="skill-num">02 / ANGULAR</span>
-                <h2>DYNAMIC COMPANY WEBSITE</h2>
-                <div class="proj-tech-pills">
-                    <span>Angular</span><span>TypeScript</span><span>CSS</span><span>HTML</span>
-                </div>
-                <div class="detail-group">
-                    <p><strong>Purpose:</strong> An enterprise portal providing a centralized hub for employee and company data with a modern dark-mode UI.</p>
-                    <p><strong>Features:</strong> Searchable employee directory, dynamic data filtering, component-based architecture, and responsive layout.</p>
-                    <p><strong>Key Learning:</strong> Built with Angular's component system and TypeScript interfaces, practicing reactive data flow and modular front-end design.</p>
-                </div>
-                <div class="project-buttons">
-                    <a href="https://github.com/vincedizon/dynamic-company-website/tree/e29380a14e99a57ff53f8c0fd449ebb79f3ae36f/src" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
-                    <a href="https://prelim-project.netlify.app" target="_blank" class="btn-small outline">↗ LIVE DEMO</a>
-                </div>
-            </div>
-            <div class="project-visuals">
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup browser-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">company-site.app</span>
-                        </div>
-                        <div class="pm-browser-body">
-                            <div class="pm-browser-nav"></div>
-                            <div class="pm-browser-hero">
-                                <div class="pm-bh-text"></div>
-                                <div class="pm-bh-text short"></div>
-                            </div>
-                            <div class="pm-browser-search">
-                                <div class="pm-search-bar">🔍 Search employees...</div>
-                            </div>
-                            <div class="pm-browser-cards">
-                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
-                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
-                                <div class="pm-emp-card"><div class="pm-avatar"></div><div class="pm-emp-info"><div></div><div></div></div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup code-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">employee.component.ts</span>
-                        </div>
-                        <div class="pm-body">
-                            <div class="pm-code-line"><span class="pm-kw">@Component</span>({</div>
-                            <div class="pm-code-line pm-indent">selector: <span class="pm-str">'app-employee'</span>,</div>
-                            <div class="pm-code-line pm-indent">templateUrl: <span class="pm-str">'./employee.html'</span></div>
-                            <div class="pm-code-line">})</div>
-                            <div class="pm-code-line"><span class="pm-kw">export class</span> <span class="pm-cls">EmployeeComponent</span> {</div>
-                            <div class="pm-code-line pm-indent">employees: <span class="pm-cls">Employee</span>[] = [];</div>
-                            <div class="pm-code-line">}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROJECT 03 — ACADEMIA STUDENT MANAGEMENT SYSTEM -->
-        <section class="project-detail-block" data-tags="nodejs">
-            <div class="project-content">
-                <span class="skill-num">03 / NODE.JS + MONGODB</span>
-                <h2>ACADEMIA STUDENT MANAGEMENT SYSTEM</h2>
-                <div class="proj-tech-pills">
-                    <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT</span><span>REST API</span><span>Vanilla JS</span>
-                </div>
-                <div class="detail-group">
-                    <p><strong>Purpose:</strong> A full-stack web application for managing student records with secure authentication, role-based access control, and a polished dark-themed UI — built entirely without a frontend framework.</p>
-                    <p><strong>Features:</strong> JWT login system with Admin and Viewer roles, full CRUD operations, real-time dashboard with animated stats, searchable and filterable student table with pagination, sortable columns, CSV export, and dark/light mode toggle.</p>
-                    <p><strong>Key Learning:</strong> Designed a proper MVC folder structure separating routes, middleware, config, and views. Implemented stateless JWT authentication, built a RESTful API with Express.js, and connected to MongoDB for persistent storage.</p>
-                </div>
-                <div class="project-buttons">
-                    <a href="https://github.com/vincedizon/academia-student-management" target="_blank" rel="noopener noreferrer" class="btn-small">↗ GITHUB REPO</a>
-                    <span class="btn-small outline disabled" title="Deployment in progress">COMING SOON</span>
-                </div>
-            </div>
-            <div class="project-visuals">
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup browser-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">Academia — Dashboard</span>
-                        </div>
-                        <div class="pm-browser-body" style="background:#0d0f14; padding:12px; display:flex; flex-direction:column; gap:8px;">
-                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
-                                <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; padding:10px;">
-                                    <div style="font-size:18px; font-weight:700; color:#c9a84c;">10</div>
-                                    <div style="font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px;">Total Students</div>
-                                </div>
-                                <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; padding:10px;">
-                                    <div style="font-size:18px; font-weight:700; color:#4cbb7f;">8</div>
-                                    <div style="font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px;">Active</div>
-                                </div>
-                            </div>
-                            <div style="background:#1a1f2e; border:1px solid #252b3b; border-radius:6px; overflow:hidden;">
-                                <div style="background:#141720; padding:6px 10px; font-size:9px; color:#6b7280; text-transform:uppercase; letter-spacing:1px; display:grid; grid-template-columns:2fr 1fr 1fr 1fr;">
-                                    <span>NAME</span><span>COURSE</span><span>YEAR</span><span>STATUS</span>
-                                </div>
-                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
-                                    <span>Vince Dizon</span><span style="color:#5b8dee;">BSIT</span><span>Yr 3</span><span style="color:#4cbb7f;">Active</span>
-                                </div>
-                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
-                                    <span>Maria Santos</span><span style="color:#5b8dee;">BSCS</span><span>Yr 2</span><span style="color:#4cbb7f;">Active</span>
-                                </div>
-                                <div style="padding:6px 10px; font-size:9px; color:#e8eaf0; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; border-top:1px solid #252b3b;">
-                                    <span>Carlo Mendoza</span><span style="color:#5b8dee;">BSCS</span><span>Yr 4</span><span style="color:#e05c5c;">Inactive</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup code-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">routes/students.js</span>
-                        </div>
-                        <div class="pm-body">
-                            <div class="pm-code-line"><span class="pm-kw">const</span> router = <span class="pm-fn">require</span>(<span class="pm-str">'express'</span>).Router();</div>
-                            <div class="pm-code-line">&nbsp;</div>
-                            <div class="pm-code-line">router.<span class="pm-fn">get</span>(<span class="pm-str">'/'</span>, <span class="pm-kw">async</span> (req, res) => {</div>
-                            <div class="pm-code-line pm-indent"><span class="pm-kw">const</span> students = <span class="pm-kw">await</span> col.<span class="pm-fn">find</span>({});</div>
-                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span>, data: students });</div>
-                            <div class="pm-code-line">});</div>
-                            <div class="pm-code-line">&nbsp;</div>
-                            <div class="pm-code-line">router.<span class="pm-fn">post</span>(<span class="pm-str">'/'</span>, protect, <span class="pm-kw">async</span> (req, res) => {</div>
-                            <div class="pm-code-line pm-indent"><span class="pm-kw">await</span> col.<span class="pm-fn">insertOne</span>(req.body);</div>
-                            <div class="pm-code-line pm-indent">res.<span class="pm-fn">json</span>({ success: <span class="pm-kw">true</span> });</div>
-                            <div class="pm-code-line">});</div>
-                            <div class="pm-code-line">&nbsp;</div>
-                            <div class="pm-code-line">module.exports = router;</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- PROJECT 04 -->
-        <section class="project-detail-block reverse" data-tags="html">
-            <div class="project-content">
-                <span class="skill-num">04 / HTML · CSS · JS</span>
-                <h2>SILUNG COFFEE WEBSITE</h2>
-                <div class="proj-tech-pills">
-                    <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span>
-                </div>
-                <div class="detail-group">
-                    <p><strong>Purpose:</strong> A fully designed multi-page website for Silung Coffee — a café inside a cultural center in Pampanga, Philippines. Built to establish the brand's digital presence and showcase the menu, features, and story.</p>
-                    <p><strong>Features:</strong> Multi-page layout (Home, Menu, Features, Contact, Sign-Up), customer testimonials, operating hours, social media integration, animated hero section with Ken Burns effect, and a modern minimal aesthetic.</p>
-                    <p><strong>Key Learning:</strong> Designed a cohesive design system from scratch — typography, color palette, spacing, and component patterns — and applied it consistently across 8+ pages without a framework.</p>
-                </div>
-                <div class="project-buttons">
-                    <a href="https://vincedizon.github.io/coffee/" target="_blank" rel="noopener noreferrer" class="btn-small">↗ LIVE SITE</a>
-                    <a href="https://github.com/vincedizon/coffee" target="_blank" rel="noopener noreferrer" class="btn-small outline">↗ GITHUB REPO</a>
-                </div>
-            </div>
-            <div class="project-visuals">
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup browser-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">vincedizon.github.io/coffee</span>
-                        </div>
-                        <div class="pm-browser-body" style="background:#0e0c0a; padding:0; overflow:hidden;">
-                            <!-- Hero -->
-                            <div style="background: linear-gradient(160deg, #1a1208 0%, #0e0c0a 100%); padding:16px; border-bottom:1px solid #2a220f;">
-                                <div style="font-size:7px; letter-spacing:3px; color:#c9a84c; margin-bottom:6px;">SILUNG COFFEE</div>
-                                <div style="font-size:13px; font-weight:700; color:#f5f0e8; margin-bottom:4px;">Where Culture Meets Coffee.</div>
-                                <div style="font-size:8px; color:rgba(245,240,232,0.5); margin-bottom:10px;">Inside Kultura ng Pampanga Cultural Center</div>
-                                <div style="display:flex; gap:8px;">
-                                    <div style="background:#c9a84c; color:#0e0c0a; font-size:7px; font-weight:700; letter-spacing:1px; padding:5px 10px; border-radius:2px;">VIEW MENU</div>
-                                    <div style="border:1px solid rgba(201,168,76,0.4); color:#c9a84c; font-size:7px; font-weight:700; letter-spacing:1px; padding:5px 10px; border-radius:2px;">OUR STORY</div>
-                                </div>
-                            </div>
-                            <!-- Menu Preview -->
-                            <div style="padding:10px 14px;">
-                                <div style="font-size:7px; letter-spacing:2px; color:#c9a84c; margin-bottom:8px;">MENU HIGHLIGHTS</div>
-                                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px;">
-                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
-                                        <div style="font-size:14px; margin-bottom:4px;">☕</div>
-                                        <div style="font-size:7px; color:#f5f0e8;">Kapeng Barako</div>
-                                        <div style="font-size:7px; color:#c9a84c;">₱85</div>
-                                    </div>
-                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
-                                        <div style="font-size:14px; margin-bottom:4px;">🍮</div>
-                                        <div style="font-size:7px; color:#f5f0e8;">Leche Flan Latte</div>
-                                        <div style="font-size:7px; color:#c9a84c;">₱120</div>
-                                    </div>
-                                    <div style="background:#1a1208; border:1px solid #2a220f; border-radius:4px; padding:8px; text-align:center;">
-                                        <div style="font-size:14px; margin-bottom:4px;">🫙</div>
-                                        <div style="font-size:7px; color:#f5f0e8;">Cold Brew</div>
-                                        <div style="font-size:7px; color:#c9a84c;">₱110</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="proj-mockup-wrapper">
-                    <div class="proj-mockup code-mockup">
-                        <div class="pm-topbar">
-                            <span class="pm-dot red"></span>
-                            <span class="pm-dot yellow"></span>
-                            <span class="pm-dot green"></span>
-                            <span class="pm-title">index.html — Hero Section</span>
-                        </div>
-                        <div class="pm-body">
-                            <div class="pm-code-line"><span class="pm-kw">&lt;section</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero"</span><span class="pm-kw">&gt;</span></div>
-                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-bg"</span><span class="pm-kw">&gt;&lt;/div&gt;</span></div>
-                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;div</span> <span class="pm-cls">class</span>=<span class="pm-str">"hero-content"</span><span class="pm-kw">&gt;</span></div>
-                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;p</span> <span class="pm-cls">class</span>=<span class="pm-str">"eyebrow"</span><span class="pm-kw">&gt;</span></div>
-                            <div class="pm-code-line pm-indent2">  SILUNG COFFEE</div>
-                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;/p&gt;</span></div>
-                            <div class="pm-code-line pm-indent2"><span class="pm-kw">&lt;h1&gt;</span>Where Culture</div>
-                            <div class="pm-code-line pm-indent2">  Meets Coffee.<span class="pm-kw">&lt;/h1&gt;</span></div>
-                            <div class="pm-code-line pm-indent"><span class="pm-kw">&lt;/div&gt;</span></div>
-                            <div class="pm-code-line"><span class="pm-kw">&lt;/section&gt;</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <footer class="main-footer">
@@ -363,23 +717,23 @@
                 © 2026 MAVERICK VINCE G DIZON |
                 <a href="https://www.linkedin.com/in/vincedizon/" target="_blank" rel="noopener noreferrer">LINKEDIN</a> |
                 <a href="https://github.com/vincedizon" target="_blank" rel="noopener noreferrer">GITHUB</a> |
-                <a href="mailto:vdizon499@gmail.com">VDIZON499@GMAIL.COM</a>
+                <a href="mailto:vdizon499@gmail.com">vdizon499@gmail.com</a>
             </p>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
+        /* Scroll progress bar */
         const progressBar = document.querySelector('.scroll-progress-bar');
         window.addEventListener('scroll', () => {
             const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             if (progressBar) progressBar.style.width = progress + '%';
         });
 
-
+        /* Filter */
         const filterBtns = document.querySelectorAll('.filter-btn');
         const projects   = document.querySelectorAll('.project-detail-block');
-
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 filterBtns.forEach(b => b.classList.remove('active'));
@@ -397,6 +751,30 @@
                 });
             });
         });
+
+        /* Scroll reveal */
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
+
+        /* Complexity bar animate */
+        const complexityObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target.querySelector('.proj-complexity-fill');
+                    if (fill) setTimeout(() => { fill.style.width = fill.dataset.width; }, 300);
+                    complexityObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.proj-complexity').forEach(el => complexityObserver.observe(el));
     </script>
 </body>
 </html>
